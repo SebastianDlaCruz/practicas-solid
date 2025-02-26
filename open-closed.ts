@@ -28,15 +28,19 @@ class Gold implements ICalculate {
 
 
 class DiscountCalculator {
-  calculateDiscount(customerType: Premium | Regular | Gold, amount: number): number {
+  calculateDiscount(customerType: ICalculate, amount: number): number {
     return customerType.discount(amount);
   }
 }
 
 // Uso
 const calculator = new DiscountCalculator();
-console.log(calculator.calculateDiscount("Regular", 100)); // 10
-console.log(calculator.calculateDiscount("Premium", 100)); // 20
+const regular = new Regular();
+const premium = new Premium();
+const gold = new Gold();
+console.log(calculator.calculateDiscount(regular, 100)); // 10
+console.log(calculator.calculateDiscount(premium, 100)); // 20
+console.log(calculator.calculateDiscount(gold, 100)); // 30
 
 /* Tu tarea:
 
